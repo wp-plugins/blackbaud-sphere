@@ -13,7 +13,7 @@ Integrates Blackbaud Sphere Friends Asking Friends with WordPress by pulling par
 
 == Installation ==
 
-1. Unzip and upload the `sphere` directory to `/wp-content/plugins/`
+1. Unzip and upload the `blackbaud-sphere` directory to `/wp-content/plugins/`
 2. Activate the plugin through the `Plugins` menu in WordPress
 3. There is no step 3.\*
 

@@ -44,3 +44,5 @@ This is the first public version so nothing to upgrade.
 == License ==
 
 Plugin does require activation before use because of the proprietary nature of the platform it integrates with. With that said this plugin is other wise free however it may cost to get Sphere configured correctly for its use.
+
+Please contact author for activation assistance.

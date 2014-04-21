@@ -5,7 +5,7 @@ Requires at least: 3.8.1
 Tested up to: 3.9
 Stable tag: 1.1.1
 
-Adds expanding/collapsing functionality to the categories checklist inside posts.
+Use shortcodes and template tags to get data from Sphere FAF in WordPress.
 
 == Description ==
 

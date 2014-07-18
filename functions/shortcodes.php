@@ -98,7 +98,7 @@ function sphere_teams($atts)
 		'show_amount_raised' => 0,
 	), $atts));
 
-	$participants = sphere_get_participants(array(
+	$participants = sphere_get_teams(array(
 		'is_team' => 'Y',
 		'amount' => $amount,
 	));
@@ -109,7 +109,7 @@ function sphere_teams($atts)
 	<ul class="top-teams">
 		<?php foreach ($participants as $participant) : ?>
 			<li>
-				<a href="http://theprouty.kintera.org/faf/search/searchTeamPart.asp?ievent=<?php echo $participant->event_id; ?>&lis=1&team=<?php echo $participant->team_id; ?>"><?php echo $show_amount_raised ? "$" . $participant->amount_raised . " - " : ''; ?><?php echo $participant->team_name; ?></a>
+				<a href="http://theprouty.kintera.org/faf/search/searchTeamPart.asp?ievent=<?php echo $participant->event_id; ?>&lis=1&team=<?php echo $participant->team_id; ?>"><?php echo $show_amount_raised ? "$" . $participant->team_amount_raised . " - " : ''; ?><?php echo $participant->team_name; ?></a>
 			</li>
 		<?php endforeach; ?>
 	</ul>

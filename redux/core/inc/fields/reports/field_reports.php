@@ -66,6 +66,8 @@ class ReduxFramework_reports {
 		}
 
 		echo '<a href="#" class="button button-primary report-add" style="margin-top: 10px;">Add Another Report</a><br/>';
+		echo '<a href="#" class="button button-primary empty-supporters" style="margin-top: 10px;">Empty Supporters</a> <span id="empty-supporters" style="line-height: 35px;"></span><br/>';
+		echo '<a href="#" class="button button-primary sync-manually" style="margin-top: 10px;">Sync Manually</a> <span id="sync-manually" style="line-height: 35px;"></span><br/>';
 
 		echo '</td></tr></table><table class="form-table no-border" style="margin-top: 0;"><tbody><tr style="border-bottom: 0;"><th></th><td>';
 	}

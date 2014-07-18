@@ -25,5 +25,29 @@
 			$(this).before(clone);
 			return false;
 		});
+		
+		$('.empty-supporters').click(function(){
+			var data = {
+				'action': 'empty_supporters',
+				'empty': 1
+			};
+			$('#empty-supporters').text("Emptying...");
+			$.post(ajaxurl, data, function(response) {
+				$('#empty-supporters').text(response);
+			});
+			return false;
+		});
+		
+		$('.sync-manually').click(function(){
+			var data = {
+				'action': 'sync_manually',
+				'sync': 1
+			};
+			$('#sync-manually').text("Syncing...");
+			$.post(ajaxurl, data, function(response) {
+				$('#sync-manually').text(response);
+			});
+			return false;
+		});
 	};
 })(jQuery);

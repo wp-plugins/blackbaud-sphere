@@ -32,7 +32,7 @@ function sphere_participants($atts)
 	<ul class="top-participants">
 		<?php foreach ($participants as $participant) : ?>
 			<li>
-				<a href="http://www.kintera.org/faf/donorReg/donorPledge.asp?ievent=<?php echo $participant->event_id; ?>&supId=<?php echo $participant->supporter_id; ?>"><?php echo $show_amount_raised ? "$" . $participant->amount_raised . " - " : ''; ?><?php echo $participant->fname; ?> <?php echo $participant->lname; ?></a>
+				<a href="http://www.kintera.org/faf/donorReg/donorPledge.asp?ievent=<?php echo $participant->event_id; ?>&supId=<?php echo $participant->supporter_id; ?>"><?php echo $show_amount_raised ? "$" . $participant->amount_raised_pending . " - " : ''; ?><?php echo $participant->fname; ?> <?php echo $participant->lname; ?></a>
 			</li>
 		<?php endforeach; ?>
 	</ul>
@@ -60,7 +60,7 @@ function sphere_report_participants($atts)
 	<ul class="<?php echo sphere_slug($report); ?>-top-participants">
 		<?php foreach ($participants as $participant) : ?>
 			<li>
-				<a href="http://www.kintera.org/faf/donorReg/donorPledge.asp?ievent=<?php echo $participant->event_id; ?>&supId=<?php echo $participant->supporter_id; ?>"><?php echo $show_amount_raised ? "$" . $participant->amount_raised . " - " : ''; ?><?php echo $participant->fname; ?> <?php echo $participant->lname; ?></a>
+				<a href="http://www.kintera.org/faf/donorReg/donorPledge.asp?ievent=<?php echo $participant->event_id; ?>&supId=<?php echo $participant->supporter_id; ?>"><?php echo $show_amount_raised ? "$" . $participant->amount_raised_pending . " - " : ''; ?><?php echo $participant->fname; ?> <?php echo $participant->lname; ?></a>
 			</li>
 		<?php endforeach; ?>
 	</ul>
@@ -84,7 +84,7 @@ function sphere_participant_id($atts)
 	?>
 	<?php if (!empty($participants)) : ?>
 		<?php foreach ($participants as $participant) : ?>
-			<a href="http://www.kintera.org/faf/donorReg/donorPledge.asp?ievent=<?php echo $participant->event_id; ?>&supId=<?php echo $participant->supporter_id; ?>"><?php echo $show_amount_raised ? "$" . $participant->amount_raised . " - " : ''; ?><?php echo $participant->fname; ?> <?php echo $participant->lname; ?></a>
+			<a href="http://www.kintera.org/faf/donorReg/donorPledge.asp?ievent=<?php echo $participant->event_id; ?>&supId=<?php echo $participant->supporter_id; ?>"><?php echo $show_amount_raised ? "$" . $participant->amount_raised_pending . " - " : ''; ?><?php echo $participant->fname; ?> <?php echo $participant->lname; ?></a>
 		<?php endforeach; ?>
 	<?php endif; ?>
 	<?php
@@ -109,7 +109,7 @@ function sphere_teams($atts)
 	<ul class="top-teams">
 		<?php foreach ($participants as $participant) : ?>
 			<li>
-				<a href="http://theprouty.kintera.org/faf/search/searchTeamPart.asp?ievent=<?php echo $participant->event_id; ?>&lis=1&team=<?php echo $participant->team_id; ?>"><?php echo $show_amount_raised ? "$" . $participant->team_amount_raised . " - " : ''; ?><?php echo $participant->team_name; ?></a>
+				<a href="http://theprouty.kintera.org/faf/search/searchTeamPart.asp?ievent=<?php echo $participant->event_id; ?>&lis=1&team=<?php echo $participant->team_id; ?>"><?php echo $show_amount_raised ? "$" . $participant->team_amount_raised_pending . " - " : ''; ?><?php echo $participant->team_name; ?></a>
 			</li>
 		<?php endforeach; ?>
 	</ul>
@@ -126,7 +126,7 @@ function sphere_report_teams($atts)
 		'show_amount_raised' => 0,
 	), $atts));
 
-	$participants = sphere_get_participants(array(
+	$participants = sphere_get_teams(array(
 		'is_team' => 'Y',
 		'amount' => $amount,
 		'type' => $report,
@@ -138,7 +138,7 @@ function sphere_report_teams($atts)
 	<ul class="<?php echo sphere_slug($report); ?>-top-teams">
 		<?php foreach ($participants as $participant) : ?>
 			<li>
-				<a href="http://theprouty.kintera.org/faf/search/searchTeamPart.asp?ievent=<?php echo $participant->event_id; ?>&lis=1&team=<?php echo $participant->team_id; ?>"><?php echo $show_amount_raised ? "$" . $participant->amount_raised . " - " : ''; ?><?php echo $participant->team_name; ?></a>
+				<a href="http://theprouty.kintera.org/faf/search/searchTeamPart.asp?ievent=<?php echo $participant->event_id; ?>&lis=1&team=<?php echo $participant->team_id; ?>"><?php echo $show_amount_raised ? "$" . $participant->team_amount_raised_pending . " - " : ''; ?><?php echo $participant->team_name; ?></a>
 			</li>
 		<?php endforeach; ?>
 	</ul>
@@ -154,7 +154,7 @@ function sphere_team_id($atts)
 		'show_amount_raised' => 0,
 	), $atts));
 
-	$participants = sphere_get_participants(array(
+	$participants = sphere_get_teams(array(
 		'team_id' => $id,
 	));
 
@@ -162,7 +162,7 @@ function sphere_team_id($atts)
 	?>
 	<?php if (!empty($participants)) : ?>
 		<?php foreach ($participants as $participant) : ?>
-		<a href="http://theprouty.kintera.org/faf/search/searchTeamPart.asp?ievent=<?php echo $participant->event_id; ?>&lis=1&team=<?php echo $participant->team_id; ?>" class="team teamId<?php echo $participant->team_id; ?>"><?php echo $show_amount_raised ? "$" . $participant->amount_raised . " - " : ''; ?><?php echo $participant->team_name; ?></a>
+		<a href="http://theprouty.kintera.org/faf/search/searchTeamPart.asp?ievent=<?php echo $participant->event_id; ?>&lis=1&team=<?php echo $participant->team_id; ?>" class="team teamId<?php echo $participant->team_id; ?>"><?php echo $show_amount_raised ? "$" . $participant->team_amount_raised_pending . " - " : ''; ?><?php echo $participant->team_name; ?></a>
 		<?php endforeach; ?>
 	<?php endif; ?>
 	<?php

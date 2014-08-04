@@ -26,11 +26,11 @@ function sphere_get_participants($params = array()) {
 		$condition .= $wpdb->prepare(" AND team_id = %s", $params['team_id']);
 	}
 
-	$order_by = " ORDER BY amount_raised DESC ";
+	$order_by = " ORDER BY amount_raised_pending DESC ";
 	if (!empty($params['amount'])) {
 		$limit = $wpdb->prepare(" LIMIT 0, %d", $params['amount']);
 	}
-	$participants = $wpdb->get_results("SELECT * FROM {$wpdb->prefix}supporters WHERE 1 {$condition} {$order_by} {$limit}");
+	$participants = $wpdb->get_results("SELECT *, (amount_raised+pending_donations) as amount_raised_pending FROM {$wpdb->prefix}supporters WHERE 1 {$condition} {$order_by} {$limit}");
 
 	return $participants;
 }
@@ -52,11 +52,11 @@ function sphere_get_teams($params = array()) {
 		$condition .= $wpdb->prepare(" AND team_id = %s", $params['team_id']);
 	}
 
-	$order_by = " ORDER BY team_amount_raised DESC ";
+	$order_by = " ORDER BY team_amount_raised_pending DESC ";
 	if (!empty($params['amount'])) {
 		$limit = $wpdb->prepare(" LIMIT 0, %d", $params['amount']);
 	}
-	$participants = $wpdb->get_results("SELECT *, SUM(amount_raised) as team_amount_raised FROM {$wpdb->prefix}supporters WHERE 1 {$condition} GROUP BY team_id {$order_by}  {$limit}");
+	$participants = $wpdb->get_results("SELECT *, SUM(amount_raised+pending_donations) as team_amount_raised_pending FROM {$wpdb->prefix}supporters WHERE 1 {$condition} GROUP BY team_id {$order_by}  {$limit}");
 
 	return $participants;
 }
@@ -176,7 +176,7 @@ function sphere_sync_participants_in_plugin() {
 			foreach (pq('td', $row) as $cell) {
 				if (trim(pq($cell)->text()) == "" && $cellindex == 0) break;
 				$data[$headers[$cellindex]] = pq($cell)->text();
-				if ($headers[$cellindex] == 'Total_Amount' || $headers[$cellindex] == 'Donation_Amount') {
+				if ($headers[$cellindex] == 'Total_Amount' || $headers[$cellindex] == 'Donation_Amount' || $headers[$cellindex] == 'Pending_Donations') {
 					$data[$headers[$cellindex]] = str_replace(array("&nbsp;", " ", ",", "$"), array("", "_", "", ""), strip_tags(pq($cell)->text()));
 				} else {
 					$data[$headers[$cellindex]] = str_replace(array("&nbsp;"), array(" "), strip_tags(trim(pq($cell)->text())));
@@ -189,7 +189,7 @@ function sphere_sync_participants_in_plugin() {
 				$member = $wpdb->get_row("SELECT * FROM {$wpdb->prefix}supporters WHERE supporter_id = '" . $data['Supporter_ID'] . "' && event_id = '" . $data['Event_ID'] . "' AND type = '{$report['name']}'", ARRAY_A);
 
 				if (empty($member)) {
-					$wpdb->query("INSERT INTO {$wpdb->prefix}supporters (type,supporter_id,fname,lname,event_id,event_name,amount_raised,team_name,team_id,date_created,last_modified) VALUES (
+					$wpdb->query("INSERT INTO {$wpdb->prefix}supporters (type,supporter_id,fname,lname,event_id,event_name,amount_raised,pending_donations,team_name,team_id,date_created,last_modified) VALUES (
 					'" . $report['name'] . "',
 					'" . $data['Supporter_ID'] . "',
 					'" . mysql_real_escape_string($data['First_Name']) . "',
@@ -197,6 +197,7 @@ function sphere_sync_participants_in_plugin() {
 					'" . $data['Event_ID'] . "',
 					'" . mysql_real_escape_string($data['Initiative_Name']) . "',
 					'" . str_replace('$', '', $data['Donation_Amount']) . "',
+					'" . str_replace('$', '', $data['Pending_Donations']) . "',
 					'" . mysql_real_escape_string($data['Team_Name']) . "',
 					'" . mysql_real_escape_string($data['Team_ID']) . "',
 					'" . time() . "',
@@ -210,6 +211,7 @@ function sphere_sync_participants_in_plugin() {
 					lname = '" . mysql_real_escape_string($data['Last_Name']) . "',
 					event_name = '" . mysql_real_escape_string($data['Initiative_Name']) . "',
 					amount_raised = '" . str_replace('$', '', $data['Donation_Amount']) . "',
+					pending_donations = '" . str_replace('$', '', $data['Pending_Donations']) . "',
 					team_name = '" . mysql_real_escape_string($data['Team_Name']) . "',
 					team_id = '" . mysql_real_escape_string($data['Team_ID']) . "',
 					last_modified = '" . time() . "'

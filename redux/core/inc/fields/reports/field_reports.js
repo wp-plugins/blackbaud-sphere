@@ -21,7 +21,7 @@
 		$('.report-add').click(function(){
 			var parent = $(this).parents("table");
 			var clone = parent.find(".form-report-hidden").clone(true).removeClass("form-report-hidden");
-			clone.find("input").removeAttr("disabled");
+			clone.find("input").removeAttr("disabled");			clone.find("select").removeAttr("disabled");
 			$(this).before(clone);
 			return false;
 		});

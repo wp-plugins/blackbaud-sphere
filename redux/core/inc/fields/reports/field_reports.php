@@ -36,7 +36,7 @@ class ReduxFramework_reports {
 					'field' => $this->value['field'][$k],
 					'condition' => $this->value['condition'][$k],
 					'criteria' => $this->value['criteria'][$k],
-					'id' => $this->value['id'][$k],
+					'id' => $this->value['id'][$k],					'team_report_only' => $this->value['team_report_only'][$k],
 				);
 			}
 		}
@@ -46,19 +46,18 @@ class ReduxFramework_reports {
 		echo '<tr valign="top"><th scope="row"><div class="redux_field_th">Sphere Field</div></th><td><input type="text" id="' . $this->field['id'] . '" name="' . $this->field['name'] . '[field][]' . $this->field['name_suffix'] . '" value="" class="regular-text ' . $this->field['class'] . '" disabled="disabled" /></td></tr>';
 		echo '<tr valign="top"><th scope="row"><div class="redux_field_th">Condition</div></th><td><input type="text" id="' . $this->field['id'] . '" name="' . $this->field['name'] . '[condition][]' . $this->field['name_suffix'] . '" value="" class="regular-text ' . $this->field['class'] . '" disabled="disabled" /></td></tr>';
 		echo '<tr valign="top"><th scope="row"><div class="redux_field_th">Criteria</div></th><td><input type="text" id="' . $this->field['id'] . '" name="' . $this->field['name'] . '[criteria][]' . $this->field['name_suffix'] . '" value="" class="regular-text ' . $this->field['class'] . '" disabled="disabled" /></td></tr>';
-		echo '<tr valign="top" style="border: 0;"><th scope="row"><div class="redux_field_th">Participant Report ID</div></th><td><input type="text" id="' . $this->field['id'] . '" name="' . $this->field['name'] . '[id][]' . $this->field['name_suffix'] . '" value="" class="regular-text ' . $this->field['class'] . '" disabled="disabled" /></td></tr>';
+		echo '<tr valign="top" style="border: 0;"><th scope="row"><div class="redux_field_th">Participant Report ID</div></th><td><input type="text" id="' . $this->field['id'] . '" name="' . $this->field['name'] . '[id][]' . $this->field['name_suffix'] . '" value="" class="regular-text ' . $this->field['class'] . '" disabled="disabled" /></td></tr>';				echo '<tr valign="top" style="border: 0;"><th scope="row"><div class="redux_field_th">Team Report Only</div></th><td><select id="' . $this->field['id'] . '" name="' . $this->field['name'] . '[team_report_only][]' . $this->field['name_suffix'] . '" class="' . $this->field['class'] . '" disabled="disabled" ><option value="Yes">Yes</option><option value="No" selected>No</option></select></td></tr>';
 		echo '<tr valign="top"><th scope="row"><div class="redux_field_th"></div></th><td><a href="#" class="button button-error report-remove">' . __( 'Remove Report', 'redux-framework' ) . '</a></td></tr>';
 		echo '<tr valign="top"></tr>';
 		echo '</table>';
 
 		if (!empty($field_values)) {
-			foreach ($field_values as $k => $value) {
-				echo '<table class="form-table form-report">';
+			foreach ($field_values as $k => $value) {				echo '<table class="form-table form-report">';
 				echo '<tr valign="top"><th scope="row"><div class="redux_field_th">Report Name</div></th><td><input type="text" id="' . $this->field['id'] . '" name="' . $this->field['name'] . '[name][]' . $this->field['name_suffix'] . '" value="' . $value['name'] . '" class="regular-text ' . $this->field['class'] . '" /></td></tr>';
 				echo '<tr valign="top"><th scope="row"><div class="redux_field_th">Sphere Field</div></th><td><input type="text" id="' . $this->field['id'] . '" name="' . $this->field['name'] . '[field][]' . $this->field['name_suffix'] . '" value="' . $value['field'] . '" class="regular-text ' . $this->field['class'] . '" /></td></tr>';
 				echo '<tr valign="top"><th scope="row"><div class="redux_field_th">Condition</div></th><td><input type="text" id="' . $this->field['id'] . '" name="' . $this->field['name'] . '[condition][]' . $this->field['name_suffix'] . '" value="' . $value['condition'] . '" class="regular-text ' . $this->field['class'] . '" /></td></tr>';
 				echo '<tr valign="top"><th scope="row"><div class="redux_field_th">Criteria</div></th><td><input type="text" id="' . $this->field['id'] . '" name="' . $this->field['name'] . '[criteria][]' . $this->field['name_suffix'] . '" value="' . $value['criteria'] . '" class="regular-text ' . $this->field['class'] . '" /></td></tr>';
-				echo '<tr valign="top" style="border: 0;"><th scope="row"><div class="redux_field_th">Participant Report ID</div></th><td><input type="text" id="' . $this->field['id'] . '" name="' . $this->field['name'] . '[id][]' . $this->field['name_suffix'] . '" value="' . $value['id'] . '" class="regular-text ' . $this->field['class'] . '" /></td></tr>';
+				echo '<tr valign="top" style="border: 0;"><th scope="row"><div class="redux_field_th">Participant Report ID</div></th><td><input type="text" id="' . $this->field['id'] . '" name="' . $this->field['name'] . '[id][]' . $this->field['name_suffix'] . '" value="' . $value['id'] . '" class="regular-text ' . $this->field['class'] . '" /></td></tr>';								echo '<tr valign="top" style="border: 0;"><th scope="row"><div class="redux_field_th">Team Report Only</div></th><td><select id="' . $this->field['id'] . '" name="' . $this->field['name'] . '[team_report_only][]' . $this->field['name_suffix'] . '" class="' . $this->field['class'] . '"><option value="Yes" '.($value['team_report_only']=="Yes"?"selected":"").'>Yes</option><option value="No" '.($value['team_report_only']=="No"?"selected":"").'>No</option></select></td></tr>';
 				echo '<tr valign="top"><th scope="row"><div class="redux_field_th"></div></th><td><a href="#" class="button button-error report-remove">' . __( 'Remove Report', 'redux-framework' ) . '</a></td></tr>';
 				echo '<tr valign="top"></tr>';
 				echo '</table>';

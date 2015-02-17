@@ -3,7 +3,7 @@ Contributors: Dave Bergschneider, CodeAndMore
 Tags: categories, admin, posts, ui, hierarchy
 Requires at least: 3.8.1
 Tested up to: 4.1
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 
 Use shortcodes and template tags to get data from Sphere FAF in WordPress.
 
@@ -22,6 +22,9 @@ Integrates Blackbaud Sphere Friends Asking Friends with WordPress by pulling par
 = No questions have been asked yet. =
 
 == Changelog ==
+= 1.3.0 =
+Bug fix. Changed report field from total amount to total donations to avoid registration fees from being added
+
 = 1.3.0 =
 * New ability to create a team only report
 * Team only report pulls team general donations

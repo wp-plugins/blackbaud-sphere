@@ -3,7 +3,7 @@
 Plugin Name: Sphere
 Description: Integrates Blackbaud Sphere Friends Asking Friends with WordPress by pulling participant reports and returning the values in WordPress for custom leaderboards using both template tags and shortcodes.
 Author: CMS Code, Inc.
-Version: 1.3.0
+Version: 1.3.1
 Author URI: http://www.cmscode.com
 */
 define('SPHERE_PATH', plugin_dir_path(__FILE__));

@@ -3,7 +3,7 @@ Contributors: Dave Bergschneider, CodeAndMore
 Tags: categories, admin, posts, ui, hierarchy
 Requires at least: 3.8.1
 Tested up to: 4.1
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 
 Use shortcodes and template tags to get data from Sphere FAF in WordPress.
 
@@ -20,6 +20,14 @@ Integrates Blackbaud Sphere Friends Asking Friends with WordPress by pulling par
 == Frequently Asked Questions ==
 
 = No questions have been asked yet. =
+
+== Changelog ==
+= 1.3.2 =
+Bug fix. Corrected database syncing issue.
+
+== Changelog ==
+= 1.3.1 =
+Bug fix. Corrected database amount issue.
 
 == Changelog ==
 = 1.3.0 =
